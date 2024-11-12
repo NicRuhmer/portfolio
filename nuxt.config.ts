@@ -13,10 +13,21 @@ export default defineNuxtConfig({
         { rel: "preconnect", href: "https://rsms.me/" },
         { rel: "stylesheet", href: "https://rsms.me/inter/inter.css" },
       ],
+      script: [
+        {
+          innerHTML: `
+          (function() {
+            const theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+          })();
+        `,
+          type: "text/javascript",
+        },
+      ],
       meta: [{ name: "description", content: "Portfolio test" }],
     },
   },
-  modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt"],
+  modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt", "nuxt-icon"],
   plugins: [],
 
   shadcn: {

@@ -10,9 +10,19 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   ...pluginVue.configs["flat/essential"],
-  ...tailwind.configs["flat/recommended"],
   {
     files: ["**/*.vue"],
-    languageOptions: { parserOptions: { parser: tseslint.parser } },
+    rules: {
+      "tailwindcss/no-custom-classname": "off", // Désactive l'avertissement pour les classes personnalisées
+    },
+    languageOptions: {
+      parserOptions: { parser: tseslint.parser },
+    },
+  },
+  {
+    ...tailwind.configs["flat/recommended"],
+    rules: {
+      "tailwindcss/no-custom-classname": "off", // Désactive l'avertissement globalement
+    },
   },
 ];

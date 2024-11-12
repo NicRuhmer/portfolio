@@ -109,8 +109,8 @@ export const projects: Project[] = [
       "FastAPI",
       "Docker",
     ],
-    link: "https://app.myauxilium.io/",
-    linkText: "myauxilium.io",
+    link: "https://www.myauxilium.ai/",
+    linkText: "myauxilium.ai",
     madeAt: "Constellation Group",
     progress: "In Progress",
   },
@@ -145,8 +145,8 @@ export const projects: Project[] = [
   {
     id: 8,
     year: 2021,
-    image: "",
-    alt_title: "",
+    image: "/images/numerika.png",
+    alt_title: "numerika",
     title: "Formation.mg",
     description:
       "Plateforme de formation en ligne pour les entreprises et les particuliers, avec des gestions des projets et des formations.",

@@ -30,6 +30,10 @@ module.exports = {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
       },
       colors: {
+        bkg: "hsl(var(--color-bkg) / <alpha-value>)",
+        content: "hsl(var(--color-content) / <alpha-value>)",
+        accent1: "hsl(var(--color-accent1) / <alpha-value>)",
+        accent2: "hsl(var(--color-accent2) / <alpha-value>)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -57,8 +61,6 @@ module.exports = {
           1: "hsl(var(--color-accent1))",
           2: "hsl(var(--color-accent2))",
         },
-        bkg: "hsl(var(--color-bkg))",
-        content: "hsl(var(--color-content))",
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
