@@ -41,11 +41,20 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps
+
       - name: Build
         run: pnpm run build
 
-      - name: Run tests
-        run: pnpm run test
+      - name: Run unit tests
+        run: pnpm run test:unit
+
+      - name: Run integration tests
+        run: pnpm run test:integration
+
+      - name: Run E2E tests
+        run: pnpm run test:e2e
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
