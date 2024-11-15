@@ -1,6 +1,6 @@
+import ProjectsComponent from "@/components/ProjectsComponent.vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
-import ProjectsComponent from "~/components/ProjectsComponent.vue";
 
 describe("ProjectsComponent", () => {
   const mockProps = {

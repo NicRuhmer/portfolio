@@ -1,6 +1,6 @@
+import NavComponent from "@/components/NavComponent.vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
-import NavComponent from "~/components/NavComponent.vue";
 
 describe("NavComponent", () => {
   it("renders navigation links correctly", () => {

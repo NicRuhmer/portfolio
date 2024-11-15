@@ -1,7 +1,7 @@
+import { experiences } from "@/data/experiences";
+import IndexPage from "@/pages/index.vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
-import { experiences } from "~/data/experiences";
-import IndexPage from "~/pages/index.vue";
 
 describe("IndexPage", () => {
   it("renders all main sections", () => {

@@ -1,6 +1,6 @@
+import AboutComponent from "@/components/AboutComponent.vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
-import AboutComponent from "~/components/AboutComponent.vue";
 
 describe("AboutComponent", () => {
   it("renders properly", () => {

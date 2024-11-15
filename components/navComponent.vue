@@ -121,10 +121,10 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, onUnmounted, ref } from 'vue';
-import { useTheme } from '~/utils/useTheme';
+import { useTheme } from "@/utils/useTheme";
+import { onMounted, onUnmounted, ref } from "vue";
 
-const activeSection = ref('about')
+const activeSection = ref("about");
 const observers: IntersectionObserver[] = []
 const { theme, toggleTheme } = useTheme()
 
