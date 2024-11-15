@@ -27,7 +27,7 @@ export default defineNuxtConfig({
       meta: [{ name: "description", content: "Portfolio test" }],
     },
   },
-  modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt", "nuxt-icon"],
+  modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt"],
   plugins: [],
 
   shadcn: {
