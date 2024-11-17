@@ -20,8 +20,10 @@
                                 :period="experience.period" :title="experience.title"
                                 :description="experience.description" :technologies="experience.technologies" />
                         </div>
-                        <h2 class="text-accent2 hover:text-accent1 text-md group mb-20 mt-10 flex cursor-pointer items-center gap-2 font-semibold transition-colors duration-200"
-                            @click="openResume" type="button">
+                        <a @click="openResume"
+                            class="text-accent2 hover:text-accent1 text-md group mb-20 mt-10 flex cursor-pointer items-center gap-2 font-semibold transition-colors duration-200"
+                            href="https://drive.google.com/file/d/1tWDKZO5-1gPGR6h3fHCox2X-U59mSOq0/view?usp=drive_link"
+                            target="_blank">
                             View Full Resume
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -30,7 +32,7 @@
                                 <path d="M7 7h10v10" />
                                 <path d="M7 17 17 7" />
                             </svg>
-                        </h2>
+                        </a>
                     </section>
                     <section id="projects">
                         <h1
@@ -42,7 +44,7 @@
                                 :link="project.link" :description="project.description"
                                 :technologies="project.technologies" />
                         </div>
-                        <h2 @click="viewAllProjects"
+                        <NuxtLink to="/projets" data-testid="archive-link"
                             class="text-accent2 hover:text-accent1 text-md group mb-20 mt-10 flex cursor-pointer items-center gap-2 font-semibold transition-colors duration-200">
                             View Full Projects Archive
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="16" viewBox="0 0 24 24"
@@ -52,7 +54,7 @@
                                 <path d="M5 12h14" />
                                 <path d="m12 5 7 7-7 7" />
                             </svg>
-                        </h2>
+                        </NuxtLink>
                         <p class="text-content mb-20 text-sm">
                             Loosely designed and inspired by some many great portfolio and minimalistic design, coded in
                             Visual Studio Code by yours truly. Built with <NuxtLink
@@ -80,7 +82,11 @@ import { projects } from '../data/projects';
 const router = useRouter();
 
 function viewAllProjects() {
-    router.push({ path: "/projets" });
+    try {
+        router.push('/projets');
+    } catch (error) {
+        console.error('Navigation error:', error);
+    }
 }
 
 const openResume = () => {

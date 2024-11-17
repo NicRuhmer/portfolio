@@ -14,7 +14,7 @@
       <div class="hidden lg:flex lg:flex-col lg:space-y-8">
         <ul class="flex flex-col space-y-8">
           <li class="group">
-            <a href="#about" :class="[
+            <a href="#about" data-testid="nav-about" :class="[
               'group flex items-center transition-colors duration-300',
               activeSection === 'about' ? 'text-accent2' : 'text-content'
             ]">
@@ -31,7 +31,7 @@
             </a>
           </li>
           <li class="group">
-            <a href="#experience" :class="[
+            <a href="#experience" data-testid="nav-experience" :class="[
               'group flex items-center transition-colors duration-300',
               activeSection === 'experience' ? 'text-accent2' : 'text-content'
             ]">
@@ -48,7 +48,7 @@
             </a>
           </li>
           <li class="group">
-            <a href="#projects" :class="[
+            <a href="#projects" data-testid="nav-projects" :class="[
               'group flex items-center transition-colors duration-300',
               activeSection === 'projects' ? 'text-accent2' : 'text-content'
             ]">
@@ -127,6 +127,12 @@ import { onMounted, onUnmounted, ref } from "vue";
 const activeSection = ref("about");
 const observers: IntersectionObserver[] = []
 const { theme, toggleTheme } = useTheme()
+
+defineExpose({
+  activeSection,
+  theme,
+  toggleTheme
+})
 
 onMounted(() => {
   const sections = ['about', 'experience', 'projects']

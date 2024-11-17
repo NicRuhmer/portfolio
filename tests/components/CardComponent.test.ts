@@ -23,5 +23,29 @@ describe("CardComponent", () => {
     });
     expect(wrapper.text()).toContain(defaultProps.title);
     expect(wrapper.text()).toContain(defaultProps.description);
+    expect(wrapper.text()).toContain(defaultProps.period);
+  });
+
+  it("renders all technologies", () => {
+    const wrapper = mount(CardComponent, {
+      props: defaultProps,
+    });
+    const techElements = wrapper.findAll('[data-testid="technology"]');
+    expect(techElements.length).toBe(defaultProps.technologies.length);
+
+    defaultProps.technologies.forEach((tech, index) => {
+      expect(techElements[index].text()).toContain(tech);
+    });
+  });
+
+  it("handles empty technologies array", () => {
+    const wrapper = mount(CardComponent, {
+      props: {
+        ...defaultProps,
+        technologies: [],
+      },
+    });
+    const techElements = wrapper.findAll('[data-testid="technology"]');
+    expect(techElements.length).toBe(0);
   });
 });

@@ -8,16 +8,26 @@ describe("AboutComponent", () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  // Test du contenu
   it("contains introduction text", () => {
     const wrapper = mount(AboutComponent);
-    expect(wrapper.text()).toContain("your introduction text here");
+    expect(wrapper.text()).toContain("Back in 2020");
+    expect(wrapper.text()).toContain("Computer Science studies");
   });
 
-  // Test des liens sociaux si présents
-  it("renders social links", () => {
+  it("contains all main sections of the introduction", () => {
     const wrapper = mount(AboutComponent);
-    const socialLinks = wrapper.findAll(".social-link");
-    expect(socialLinks.length).toBeGreaterThan(0);
+
+    // Vérifie les sections principales
+    const expectedContent = [
+      "Back in 2020",
+      "Computer Science studies",
+      "performance optimization",
+      "web accessibility",
+      "Outside of coding",
+    ];
+
+    expectedContent.forEach((content) => {
+      expect(wrapper.text()).toContain(content);
+    });
   });
 });

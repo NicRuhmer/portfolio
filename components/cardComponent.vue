@@ -18,7 +18,7 @@
                 {{ description }}
             </p>
             <p class="text-content mt-2 flex flex-wrap gap-2 text-sm">
-                <span v-for="tech in technologies" :key="tech"
+                <span v-for="tech in technologies" :key="tech" data-testid="technology"
                     class="bg-accent1/10 text-accent1 rounded-xl px-3 py-1 text-sm transition-colors duration-300">
                     {{ tech }}
                 </span>

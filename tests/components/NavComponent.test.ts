@@ -1,6 +1,21 @@
 import NavComponent from "@/components/NavComponent.vue";
 import { mount } from "@vue/test-utils";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+import { ref } from "vue";
+
+// Mock du module useTheme
+vi.mock("@/utils/useTheme", () => ({
+  useTheme: () => {
+    const theme = ref("light");
+    const toggleTheme = () => {
+      theme.value = theme.value === "light" ? "dark" : "light";
+    };
+    return {
+      theme,
+      toggleTheme,
+    };
+  },
+}));
 
 describe("NavComponent", () => {
   it("renders navigation links correctly", () => {
@@ -10,8 +25,21 @@ describe("NavComponent", () => {
   });
 
   it("changes active section on scroll", async () => {
-    const wrapper = mount(NavComponent);
-    await wrapper.setData({ activeSection: "experience" });
+    const wrapper = mount(NavComponent, {
+      global: {
+        stubs: {
+          IntersectionObserver: true,
+        },
+      },
+    });
+
+    // Accéder à la ref exposée
+    const vm = wrapper.vm as any;
+
+    // Modifier la valeur de activeSection directement
+    vm.activeSection = "experience";
+    await wrapper.vm.$nextTick();
+
     const experienceLink = wrapper.find('a[href="#experience"]');
     expect(experienceLink.classes()).toContain("text-accent2");
   });
@@ -19,8 +47,15 @@ describe("NavComponent", () => {
   it("handles theme toggle", async () => {
     const wrapper = mount(NavComponent);
     const themeButton = wrapper.find("button");
+
+    // Récupérer l'état initial du thème
+    const initialTheme = wrapper.vm.theme;
+
+    // Cliquer sur le bouton
     await themeButton.trigger("click");
-    expect(wrapper.emitted("toggle-theme")).toBeTruthy();
+
+    // Vérifier que toggleTheme a été appelé
+    expect(wrapper.vm.theme).not.toBe(initialTheme);
   });
 
   it("renders social links with correct hrefs", () => {

@@ -6,8 +6,14 @@ export default defineConfig({
     baseURL: "http://localhost:3000",
   },
   webServer: {
-    command: "pnpm run dev",
-    url: "http://localhost:3000",
+    command: "npm run dev",
+    port: 3000,
     reuseExistingServer: !process.env.CI,
   },
+  projects: [
+    {
+      name: "chromium",
+      use: { browserName: "chromium" },
+    },
+  ],
 });
