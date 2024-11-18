@@ -1,6 +1,6 @@
-import CardComponent from "@/components/CardComponent.vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
+import CardComponent from "../../components/CardComponent.vue";
 
 describe("CardComponent", () => {
   const defaultProps = {
