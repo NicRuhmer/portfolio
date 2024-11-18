@@ -9,7 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "release": "release-it",
-    "test:unit": "vitest",
+    "test:unit": "vitest tests/components/*.test.ts",
     "test:integration": "vitest tests/pages/**/*.test.ts",
     "test:e2e": "playwright test",
     "test:all": "pnpm test:unit && pnpm test:integration && pnpm test:e2e"

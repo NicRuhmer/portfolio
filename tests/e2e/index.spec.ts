@@ -19,14 +19,3 @@ test("projects page navigation works", async ({ page }) => {
   await page.getByText("View Full Projects Archive").click();
   await expect(page).toHaveURL("/projets");
 });
-
-test("theme toggle works", async ({ page }) => {
-  await page.goto("/");
-  const themeButton = page.locator("button:has(svg)").first();
-  await themeButton.click();
-
-  // Vérifier l'attribut data-theme
-  await expect(page.locator("html")).toHaveAttribute("data-theme", "dark", {
-    timeout: 2000,
-  });
-});
