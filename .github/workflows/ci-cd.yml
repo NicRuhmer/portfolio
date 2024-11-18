@@ -30,7 +30,7 @@ jobs:
       - run: pnpm install
       - name: List directory structure
         run: echo "Current directory structure:"
-          ls -R src/components
+          ls -R ./components
       # - name: Install Playwright
       #   run: pnpm exec playwright install --with-deps
       - name: Run unit tests
