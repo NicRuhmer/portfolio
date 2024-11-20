@@ -13,6 +13,12 @@ vi.mock("vue-router", () => ({
   }),
 }));
 
+vi.mock("@/utils/useAssetUrl", () => ({
+  useAssetUrl: () => ({
+    getAssetUrl: (path: string) => `/images/${path.replace(/^\//, "")}`,
+  }),
+}));
+
 describe("ProjectsIndex", () => {
   let router: any;
 
@@ -73,6 +79,13 @@ describe("ProjectsIndex", () => {
     const wrapper = mount(ProjectsIndex, {
       global: {
         plugins: [router],
+        stubs: {
+          NuxtImg: {
+            template:
+              '<img :src="`${src}`" :alt="alt" data-testid="project-image" />',
+            props: ["src", "alt"],
+          },
+        },
       },
     });
 
@@ -82,9 +95,14 @@ describe("ProjectsIndex", () => {
     const firstProject = projects[0];
     const firstMobileProject = mobileProjects[0];
 
-    expect(
-      firstMobileProject.find('[data-testid="project-image"]').attributes("src")
-    ).toBe(firstProject.image);
+    const projectImage = firstMobileProject.find(
+      '[data-testid="project-image"]'
+    );
+    expect(projectImage.exists()).toBe(true);
+    expect(projectImage.attributes("src")).toBe(
+      `/images/${firstProject.image}`
+    );
+
     expect(
       firstMobileProject.find('[data-testid="mobile-project-title"]').text()
     ).toContain(firstProject.title);
