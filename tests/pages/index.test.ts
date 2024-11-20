@@ -1,4 +1,4 @@
-import CardComponent from "@/components/CardComponent.vue";
+import CardComponent from "@/components/cardComponent.vue";
 import { experiences } from "@/data/experiences";
 import IndexPage from "@/pages/index.vue";
 import { mount } from "@vue/test-utils";

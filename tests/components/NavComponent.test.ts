@@ -1,4 +1,4 @@
-import NavComponent from "@/components/NavComponent.vue";
+import NavComponent from "@/components/navComponent.vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 import { ref } from "vue";
