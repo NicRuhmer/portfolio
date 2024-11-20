@@ -26,6 +26,8 @@ export default defineNuxtConfig({
       ],
       meta: [{ name: "description", content: "Portfolio test" }],
     },
+    baseURL: "/portfolio.github.io/",
+    buildAssetsDir: "assets",
   },
   modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt"],
   plugins: [],
