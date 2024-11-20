@@ -26,10 +26,30 @@ export default defineNuxtConfig({
       ],
       meta: [{ name: "description", content: "Portfolio test" }],
     },
-    baseURL: "/portfolio.github.io/",
-    buildAssetsDir: "assets",
+    baseURL: "/portfolio/",
+    buildAssetsDir: "_nuxt/",
   },
-  modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt"],
+  router: {
+    options: {
+      strict: false,
+    },
+  },
+  image: {
+    dir: "public",
+    provider: "ipx",
+    presets: {
+      default: {
+        modifiers: {
+          quality: 80,
+        },
+      },
+    },
+    domains: ["localhost"],
+    alias: {
+      portfolio: ".",
+    },
+  },
+  modules: ["@nuxtjs/tailwindcss", "shadcn-nuxt", "@nuxt/image"],
   plugins: [],
 
   shadcn: {

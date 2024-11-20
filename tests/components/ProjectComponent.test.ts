@@ -2,6 +2,14 @@ import ProjectsComponent from "@/components/projectsComponent.vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 
+vi.mock("#app", () => ({
+  useRuntimeConfig: () => ({
+    app: {
+      baseURL: "/portfolio/",
+    },
+  }),
+}));
+
 describe("ProjectsComponent", () => {
   const mockProps = {
     image: "/test-image.jpg",
@@ -17,7 +25,9 @@ describe("ProjectsComponent", () => {
       props: mockProps,
     });
 
-    expect(wrapper.find("img").attributes("src")).toBe(mockProps.image);
+    expect(wrapper.find("img").attributes("src")).toContain(
+      "/portfolio/_ipx/_/images/" + mockProps.image
+    );
     expect(wrapper.find("h2").text()).toContain(mockProps.title);
     expect(wrapper.text()).toContain(mockProps.description);
   });

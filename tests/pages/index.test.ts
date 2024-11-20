@@ -4,6 +4,14 @@ import IndexPage from "@/pages/index.vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 
+vi.mock("#app", () => ({
+  useRuntimeConfig: () => ({
+    app: {
+      baseURL: "/portfolio/",
+    },
+  }),
+}));
+
 describe("IndexPage", () => {
   const mountOptions = {
     global: {

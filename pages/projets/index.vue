@@ -63,8 +63,8 @@
           <div v-for="project in projects" :key="project.id" data-testid="mobile-project"
             class="hover:bg-accent1/5 group mt-3 flex w-full flex-col md:flex-row justify-between gap-6 rounded-lg bg-transparent px-5 py-6 backdrop-blur-lg transition-all duration-300 hover:!opacity-100 hover:shadow-lg hover:!blur-none [.hover-group:hover_&:not(:hover)]:opacity-50 [.hover-group:hover_&:not(:hover)]:blur-[.5px]">
             <div class="w-full md:w-2/6 shrink-0 text-sm">
-              <img data-testid="project-image" :src="project.image" :alt="project.alt_title"
-                class="h-auto w-full rounded-lg" />
+              <NuxtImg :src="`/images/${project.image.replace(/^\/?(images\/)?/, '')}`" :alt="project.alt_title"
+                class="h-auto w-full rounded-lg" quality="80" />
             </div>
             <div class="text-accent2 w-full md:w-4/6 cursor-pointer">
               <h2 @click="goToProject(project.link)" data-testid="mobile-project-title"

@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     id: 1,
     year: 2023,
-    image: "/images/twisales.png",
+    image: "twisales.png",
     alt_title: "twisales",
     title: "Twisales",
     description:
@@ -26,7 +26,7 @@ export const projects: Project[] = [
   {
     id: 2,
     year: 2023,
-    image: "/images/adherent.png",
+    image: "adherent.png",
     alt_title: "adherent",
     title: "Adherent",
     description:
@@ -49,7 +49,7 @@ export const projects: Project[] = [
   {
     id: 3,
     year: 2023,
-    image: "/images/centralcare.png",
+    image: "centralcare.png",
     alt_title: "central care",
     title: "Central Care",
     description:
@@ -71,7 +71,7 @@ export const projects: Project[] = [
   {
     id: 4,
     year: 2023,
-    image: "/images/affilie.png",
+    image: "affilie.png",
     alt_title: "affilie",
     title: "Affilie",
     description:
@@ -94,7 +94,7 @@ export const projects: Project[] = [
   {
     id: 5,
     year: 2023,
-    image: "/images/auxilium.png",
+    image: "auxilium.png",
     alt_title: "auxilium",
     title: "myAuxilium",
     description:
@@ -117,7 +117,7 @@ export const projects: Project[] = [
   {
     id: 6,
     year: 2022,
-    image: "/images/ostie.png",
+    image: "ostie.png",
     alt_title: "ostie",
     title: "OSTIE",
     description:
@@ -131,7 +131,7 @@ export const projects: Project[] = [
   {
     id: 7,
     year: 2022,
-    image: "/images/constellation.png",
+    image: "constellation.png",
     alt_title: "constellation",
     title: "Constellation",
     description:
@@ -145,7 +145,7 @@ export const projects: Project[] = [
   {
     id: 8,
     year: 2021,
-    image: "/images/numerika.png",
+    image: "numerika.png",
     alt_title: "numerika",
     title: "Formation.mg",
     description:

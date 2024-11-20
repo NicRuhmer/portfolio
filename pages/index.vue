@@ -78,12 +78,15 @@ import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { experiences } from '../data/experiences';
 import { projects } from '../data/projects';
+import { useAssetUrl } from '../utils/useAssetUrl';
+
+const { getAssetUrl } = useAssetUrl();
 
 const router = useRouter();
 
 function viewAllProjects() {
     try {
-        router.push('/projets');
+        router.push(getAssetUrl('projets'));
     } catch (error) {
         console.error('Navigation error:', error);
     }
