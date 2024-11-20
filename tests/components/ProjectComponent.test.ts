@@ -2,7 +2,7 @@ import ProjectsComponent from "@/components/projectsComponent.vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("#app", () => ({
+vi.mock("@nuxt/app", () => ({
   useRuntimeConfig: () => ({
     app: {
       baseURL: "/portfolio/",
