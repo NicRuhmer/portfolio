@@ -2,17 +2,16 @@ import ProjectsComponent from "@/components/projectsComponent.vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("@nuxt/app", () => ({
-  useRuntimeConfig: () => ({
-    app: {
-      baseURL: "/portfolio/",
-    },
+vi.mock("@/utils/useAssetUrl", () => ({
+  useAssetUrl: () => ({
+    getAssetUrl: (path: string) =>
+      `/portfolio/_ipx/_/images/${path.replace(/^\//, "")}`,
   }),
 }));
 
 describe("ProjectsComponent", () => {
   const mockProps = {
-    image: "/test-image.jpg",
+    image: "test-image.jpg",
     alt_title: "Test Project",
     title: "Project Title",
     description: "Project Description",
@@ -23,10 +22,20 @@ describe("ProjectsComponent", () => {
   it("renders with all props correctly", () => {
     const wrapper = mount(ProjectsComponent, {
       props: mockProps,
+      global: {
+        stubs: {
+          NuxtImg: {
+            template: '<img :src="`/portfolio/_ipx/_${src}`" :alt="alt" />',
+            props: ["src", "alt"],
+          },
+        },
+      },
     });
 
-    expect(wrapper.find("img").attributes("src")).toContain(
-      "/portfolio/_ipx/_/images/" + mockProps.image
+    const img = wrapper.find("img");
+    expect(img.exists()).toBe(true);
+    expect(img.attributes("src")).toBe(
+      `/portfolio/_ipx/_/images/${mockProps.image}`
     );
     expect(wrapper.find("h2").text()).toContain(mockProps.title);
     expect(wrapper.text()).toContain(mockProps.description);

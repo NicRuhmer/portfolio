@@ -1,7 +1,11 @@
-import { useRuntimeConfig } from "@nuxt/app";
+import type { RuntimeConfig } from "@nuxt/schema";
 
 export function useAssetUrl() {
-  const config = useRuntimeConfig();
+  const config = {
+    app: {
+      baseURL: "/portfolio/",
+    },
+  } as RuntimeConfig;
 
   return {
     getAssetUrl: (path: string) =>
