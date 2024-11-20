@@ -28,12 +28,6 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: ${{ runner.os }}-pnpm-store-
       - run: pnpm install
-      - name: Debug directory structure
-        run: |
-          pwd
-          ls -la
-          ls -la components/ || echo "No components directory"
-          ls -la tests/ || echo "No tests directory"
       # - name: Install Playwright
       #   run: pnpm exec playwright install --with-deps
       - name: Run unit tests
