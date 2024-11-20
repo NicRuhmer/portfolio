@@ -1,4 +1,4 @@
-import AboutComponent from "@/components/AboutComponent.vue";
+import AboutComponent from "@/components/aboutComponent.vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it } from "vitest";
 

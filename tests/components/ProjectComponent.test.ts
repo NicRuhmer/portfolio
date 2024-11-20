@@ -1,4 +1,4 @@
-import ProjectsComponent from "@/components/ProjectsComponent.vue";
+import ProjectsComponent from "@/components/projectsComponent.vue";
 import { mount } from "@vue/test-utils";
 import { describe, expect, it, vi } from "vitest";
 
