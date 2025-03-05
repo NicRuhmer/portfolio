@@ -1,0 +1,88 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [stable_branch]
+  pull_request:
+    branches: [stable_branch]
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+      - name: Get pnpm store directory
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      - uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-pnpm-store-
+      - run: pnpm install
+      # - name: Install Playwright
+      #   run: pnpm exec playwright install --with-deps
+      - name: Run unit tests
+        run: pnpm run test:unit
+      - name: Run integration tests
+        run: pnpm run test:integration
+      # - name: Run E2E tests
+      #   run: pnpm run test:e2e
+
+  build-and-deploy:
+    name: Build and Deploy
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/stable_branch'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
+
+      - name: Get pnpm store directory
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+      - uses: actions/cache@v3
+        with:
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Generate static files
+        run: pnpm run generate # Utilisez generate au lieu de build pour Nuxt
+
+      - name: Add .nojekyll file
+        run: touch .output/public/.nojekyll
+
+      - name: Create CNAME file if needed
+        run: echo "votre-domaine.com" > .output/public/CNAME
+        if: false # Activez cette étape si vous utilisez un domaine personnalisé
+
+      - name: Copy 404.html
+        run: cp public/404.html .output/public/404.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .output/public
