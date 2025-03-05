@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 0 0% 3.9%;
+
+    --radius: 0.5rem;
+
+    --color-bkg: 210deg 40% 98%;
+    --color-content: 215deg 25% 27%;
+    --color-accent1: 158deg 64% 52%;
+    --color-accent2: 215deg 20% 65%;
+  }
+
+  :root[data-theme="dark"] {
+    --color-bkg: 224deg 46% 12%;
+    --color-content: 215deg 16% 47%;
+    --color-accent1: 172deg 66% 60%;
+    --color-accent2: 210deg 40% 98%;
+  }
+
+  :root[data-theme="light"] {
+    --color-bkg: 210deg 40% 98%;
+    --color-content: 215deg 16% 47%;
+    --color-accent1: 156deg 64% 51%;
+    --color-accent2: 224deg 46% 12%;
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+.light-cursor {
+  position: fixed;
+  width: 1000px;
+  height: 1000px;
+  background: radial-gradient(circle,
+      rgba(18, 31, 69, 0.4) 0%,
+      rgba(18, 31, 69, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: 0.1s ease;
+  mix-blend-mode: screen;
+}
+
+[data-theme="light"] .light-cursor {
+  background: radial-gradient(circle,
+      rgba(20, 184, 166, 0.3) 0%,
+      rgba(20, 184, 166, 0) 70%);
+  mix-blend-mode: multiply;
+}
+
+::selection {
+  background-color: rgb(20 184 166 / 1);
+  color: rgb(0, 0, 0, .8);
+
+}
+
+::-moz-selection {
+  background-color: rgb(20 184 166 / 1);
+  color: rgb(0, 0, 0, .8);
+}
+
+[data-theme="dark"] .hover\:bg-accent1\/5:hover {
+  background-color: rgb(0 0 0 / 0.2);
+}
+
+[data-theme="light"] .hover\:bg-accent1\/5:hover {
+  background-color: rgb(255 255 255 / 0.2);
+}
