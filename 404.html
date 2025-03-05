@@ -1,1 +1,18 @@
-{ "homepage": "https://votre-username.github.io/votre-repo/", "rewrites": [{ "source": "**", "destination": "/index.html" }] }
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Redirection...</title>
+  <script>
+    sessionStorage.redirect = location.href;
+    location.replace(location.origin + '/portfolio/'); // Remplacez 'portfolio' par le nom de votre dépôt
+  </script>
+</head>
+
+<body>
+  <h1>Redirection en cours...</h1>
+  <p>Si vous n'êtes pas redirigé automatiquement, <a href="/portfolio/">cliquez ici</a>.</p>
+</body>
+
+</html>
