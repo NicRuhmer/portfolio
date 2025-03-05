@@ -78,9 +78,8 @@ jobs:
         run: echo "votre-domaine.com" > .output/public/CNAME
         if: false # Activez cette étape si vous utilisez un domaine personnalisé
 
-      - name: Create GitHub Pages config
-        run: |
-          echo '{ "homepage": "https://votre-username.github.io/votre-repo/", "rewrites": [{ "source": "**", "destination": "/index.html" }] }' > .output/public/404.html
+      - name: Copy 404.html
+        run: cp public/404.html .output/public/404.html
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
