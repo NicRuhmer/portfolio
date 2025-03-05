@@ -4,9 +4,9 @@ export const experiences: Experience[] = [
   {
     id: 1,
     period: "May 2024 - Present",
-    title: "Senior Fullstack Developer - Constellation Group",
+    title: "Lead Developer - Constellation Group",
     description:
-      "As a Senior Developer, I lead the architecture and development of complex technical solutions including SPAs and REST APIs. I drive technical excellence through mentoring team members and establishing development best practices. I've taken ownership of company-wide accessibility initiatives, creating documentation and conducting training sessions. My role involves deep UX research and applying design thinking principles to enhance user satisfaction, while providing technical leadership across multiple projects.",
+      "As a Lead Developer, I lead the architecture and development of complex technical solutions including SPAs and REST APIs. I drive technical excellence through mentoring team members and establishing development best practices. I've taken ownership of company-wide accessibility initiatives, creating documentation and conducting training sessions. My role involves deep UX research and applying design thinking principles to enhance user satisfaction, while providing technical leadership across multiple projects.",
     technologies: [
       "Vue",
       "Nuxt",

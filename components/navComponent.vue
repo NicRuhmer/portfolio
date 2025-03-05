@@ -4,7 +4,7 @@
       <div>
         <h2 class="text-accent2 mb-2 text-3xl lg:text-5xl font-bold">Heriniaina Ralison</h2>
         <p class="text-content text-lg lg:text-xl/relaxed">
-          FullStack Developer
+          Lead Developer
         </p>
         <p class=" text-content mt-4">
           I build high-performance, engaging and <br>accessible web
@@ -66,6 +66,9 @@
           </li>
         </ul>
       </div>
+    </div>
+    <div class="flex flex-col gap-4 ">
+
     </div>
     <div class="mb-12 mt-5 flex flex-row space-x-4">
       <a href="https://github.com/NicRuhmer" target="_blank"

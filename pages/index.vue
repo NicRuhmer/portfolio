@@ -93,7 +93,7 @@ function viewAllProjects() {
 }
 
 const openResume = () => {
-    window.open('https://drive.google.com/file/d/1tWDKZO5-1gPGR6h3fHCox2X-U59mSOq0/view?usp=drive_link', '_blank');
+    window.open('https://drive.google.com/file/d/1v6cKh-P-LHoxmuwwXRQyN-mSx53UNFzK/view?usp=sharing', '_blank');
 }
 
 onMounted(() => {
