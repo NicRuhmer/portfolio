@@ -41,6 +41,7 @@ export default defineNuxtConfig({
     },
     baseURL: "/portfolio/",
     buildAssetsDir: "/portfolio/_nuxt/",
+    ssr: false,
   },
   router: {
     options: {

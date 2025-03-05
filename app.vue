@@ -16,8 +16,21 @@
 </template>
 
 <script setup>
+import { onMounted, useRouter } from 'vue'
 
+onMounted(() => {
+  const router = useRouter()
+  const redirect = sessionStorage.getItem('redirect')
+
+  if (redirect) {
+    sessionStorage.removeItem('redirect')
+    // Assurez-vous que le chemin commence par '/'
+    const path = redirect.startsWith('/') ? redirect : '/' + redirect
+    router.push(path)
+  }
+})
 </script>
+
 <style>
 /* body { */
 /* background-color: hsl(224deg 46% 12%); */

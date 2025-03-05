@@ -3,15 +3,27 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Redirection...</title>
+  <title>Page Not Found</title>
   <script>
-    sessionStorage.redirect = location.href;
-    location.replace(location.origin + '/portfolio/'); // Remplacez 'portfolio' par le nom de votre dépôt
+    // Fonction pour obtenir le segment de chemin après le nom du dépôt
+    function getSegmentAfterRepo() {
+      const path = window.location.pathname;
+      const repoName = '/portfolio/';
+      const pathAfterRepo = path.indexOf(repoName) === 0
+        ? path.slice(repoName.length - 1)
+        : path;
+      return pathAfterRepo || '/';
+    }
+
+    // Stocke le chemin actuel et redirige vers la page d'accueil
+    sessionStorage.setItem('redirect', getSegmentAfterRepo());
+    window.location.replace('/portfolio/');
   </script>
 </head>
 
 <body>
-  <h1>Redirection en cours...</h1>
+  <h1>Page non trouvée</h1>
+  <p>Redirection vers la page d'accueil...</p>
   <p>Si vous n'êtes pas redirigé automatiquement, <a href="/portfolio/">cliquez ici</a>.</p>
 </body>
 
