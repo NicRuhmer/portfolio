@@ -16,7 +16,8 @@
 </template>
 
 <script setup>
-import { onMounted, useRouter } from 'vue'
+import { useRouter } from 'nuxt/app'
+import { onMounted } from 'vue'
 
 onMounted(() => {
   const router = useRouter()
