@@ -2,12 +2,17 @@
 <html>
 
 <head>
+  <meta charset="utf-8">
+  <title>Redirection...</title>
   <script>
-    const path = window.location.pathname;
-    const repo = '/portfolio/'; // Remplacez par votre nom de dépôt
-    localStorage.setItem('path', path.replace(repo, '/'));
-    window.location.href = repo;
+    sessionStorage.redirect = location.href;
+    location.replace(location.origin + '/portfolio/'); // Remplacez 'portfolio' par le nom de votre dépôt
   </script>
 </head>
+
+<body>
+  <h1>Redirection en cours...</h1>
+  <p>Si vous n'êtes pas redirigé automatiquement, <a href="/portfolio/">cliquez ici</a>.</p>
+</body>
 
 </html>

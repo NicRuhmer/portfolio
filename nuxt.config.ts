@@ -23,11 +23,24 @@ export default defineNuxtConfig({
         `,
           type: "text/javascript",
         },
+        {
+          innerHTML: `
+            (function() {
+              const redirect = sessionStorage.redirect;
+              delete sessionStorage.redirect;
+              if (redirect && redirect !== location.href) {
+                history.replaceState(null, null, redirect);
+              }
+            })();
+          `,
+          type: "text/javascript",
+          charset: "utf-8",
+        },
       ],
       meta: [{ name: "description", content: "Portfolio test" }],
     },
     baseURL: "/portfolio/",
-    buildAssetsDir: "_nuxt/",
+    buildAssetsDir: "/portfolio/_nuxt/",
   },
   router: {
     options: {

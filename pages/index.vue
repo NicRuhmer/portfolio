@@ -101,8 +101,10 @@ onMounted(() => {
     const light = document.querySelector('.light-cursor')
 
     document.addEventListener('mousemove', (e) => {
-        light.style.left = e.pageX + 'px'
-        light.style.top = e.pageY + 'px'
+        if (light) {
+            (light as HTMLElement).style.left = e.pageX + 'px';
+            (light as HTMLElement).style.top = e.pageY + 'px';
+        }
     })
 });
 </script>
